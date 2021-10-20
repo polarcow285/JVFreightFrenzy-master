@@ -13,23 +13,19 @@ public class TankDrive extends LinearOpMode{
         robot.init(hardwareMap);
 
         float speedMultiplier = 1;
-        boolean yPressed = false;
+
         //wait for start button to be pressed
         waitForStart();
 
         //write teleop code here
 
-        boolean halfPower = false;
-
         while(opModeIsActive()) {
             if(gamepad1.y){
-                if(yPressed == false) {
-                    speedMultiplier = -0.5f;
-                    yPressed = true;
+                if(speedMultiplier == 1) {
+                    speedMultiplier = 0.5f;
                 }
                 else{
-                    speedMultiplier = -1f;
-                    yPressed = false;
+                    speedMultiplier = 1;
                 }
 
             }

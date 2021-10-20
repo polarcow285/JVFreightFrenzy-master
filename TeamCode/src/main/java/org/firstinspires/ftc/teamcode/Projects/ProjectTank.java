@@ -13,7 +13,6 @@ public class ProjectTank extends Project{
     public void init(HardwareMap ahwMap) {
         //Save reference to Hardware map
         hwMap = ahwMap;
-
         //Define and Initialize Motors
         rightMotor = hwMap.dcMotor.get("rightMotor");
         leftMotor = hwMap.dcMotor.get("leftMotor");
