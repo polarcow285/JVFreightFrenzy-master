@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode.Projects;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
+import com.qualcomm.robotcore.hardware.Servo;
 
 public class ProjectTank extends Project{
     //Project file for JV Robot
@@ -9,6 +10,7 @@ public class ProjectTank extends Project{
     //Setup motors
     public DcMotor rightMotor = null;
     public DcMotor leftMotor = null;
+    public DcMotor armMotor = null;
     @Override
     public void init(HardwareMap ahwMap) {
         //Save reference to Hardware map
@@ -16,6 +18,7 @@ public class ProjectTank extends Project{
         //Define and Initialize Motors
         rightMotor = hwMap.dcMotor.get("rightMotor");
         leftMotor = hwMap.dcMotor.get("leftMotor");
+        armMotor = hwMap.dcMotor.get("armMotor");
 
         //Setup Motor directions and Encoder settings
         leftMotor.setDirection(DcMotor.Direction.REVERSE);
@@ -23,6 +26,8 @@ public class ProjectTank extends Project{
 
         leftMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         rightMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+
+        armMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
         leftMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         rightMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
@@ -34,5 +39,7 @@ public class ProjectTank extends Project{
     public void Stop(){
         rightMotor.setPower(0);
         leftMotor.setPower(0);
+
+        armMotor.setPower(0);
     }
 }

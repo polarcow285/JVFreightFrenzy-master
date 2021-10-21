@@ -29,8 +29,21 @@ public class TankDrive extends LinearOpMode{
                 }
 
             }
-            robot.leftMotor.setPower(speedMultiplier * gamepad1.left_stick_y);
-            robot.rightMotor.setPower(speedMultiplier * gamepad1.right_stick_y);
+            robot.leftMotor.setPower(speedMultiplier * -gamepad1.left_stick_y);
+            robot.rightMotor.setPower(speedMultiplier * -gamepad1.right_stick_y);
+
+            if(gamepad1.left_bumper == true){
+                robot.armMotor.setPower(1f);
+            }
+            else{
+                robot.armMotor.setPower(0);
+            }
+            if(gamepad1.right_bumper == true){
+                robot.armMotor.setPower(-1f);
+            }
+            else{
+                robot.armMotor.setPower(0);
+            }
         }
         robot.leftMotor.setPower(0);
         robot.rightMotor.setPower(0);
