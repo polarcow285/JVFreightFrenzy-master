@@ -5,13 +5,11 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-@Autonomous(name="TestMecanumAuto")
+@Autonomous(name="ParkingAutoFar")
 //"tag" that is displayed on driver hub
-public class BasicAuto extends LinearOpMode{
+public class ParkingAutoFar extends LinearOpMode {
     //creating robot object
     public ProjectTank robot = new ProjectTank();
-
-    private ElapsedTime runtime = new ElapsedTime();
 
     @Override
     public void runOpMode() throws InterruptedException {
@@ -25,16 +23,12 @@ public class BasicAuto extends LinearOpMode{
 
         //write autonomous code here
 
-        //robot.rightMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        //robot.leftMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-
         //3000 forward
         //1120 encoder counts = 1 revolution
 
-        encoderDrive(0.2, 3000, 3000);
+        encoderDrive(.7, 1520, 1520);
 
     }
-
 
     public void encoderDrive(double speed,
                              double leftCounts, double rightCounts) {
@@ -45,8 +39,8 @@ public class BasicAuto extends LinearOpMode{
         if (opModeIsActive()) {
 
             // Determine new target position, and pass to motor controller
-            newLeftTarget = robot.leftMotor.getCurrentPosition() + (int)(leftCounts);
-            newRightTarget = robot.rightMotor.getCurrentPosition() + (int)(rightCounts);
+            newLeftTarget = robot.leftMotor.getCurrentPosition() + (int) (leftCounts);
+            newRightTarget = robot.rightMotor.getCurrentPosition() + (int) (rightCounts);
             robot.leftMotor.setTargetPosition(newLeftTarget);
             robot.rightMotor.setTargetPosition(newRightTarget);
 
@@ -54,8 +48,6 @@ public class BasicAuto extends LinearOpMode{
             robot.leftMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
             robot.rightMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
-            // reset the timeout time and start motion.
-            runtime.reset();
             robot.leftMotor.setPower(Math.abs(speed));
             robot.rightMotor.setPower(Math.abs(speed));
 
@@ -69,8 +61,8 @@ public class BasicAuto extends LinearOpMode{
                     (robot.leftMotor.isBusy() && robot.rightMotor.isBusy())) {
 
                 // Display it for the driver.
-                telemetry.addData("Path1",  "Running to %7d :%7d", newLeftTarget,  newRightTarget);
-                telemetry.addData("Path2",  "Running at %7d :%7d",
+                telemetry.addData("Path1", "Running to %7d :%7d", newLeftTarget, newRightTarget);
+                telemetry.addData("Path2", "Running at %7d :%7d",
                         robot.leftMotor.getCurrentPosition(),
                         robot.rightMotor.getCurrentPosition());
                 telemetry.update();
@@ -83,25 +75,6 @@ public class BasicAuto extends LinearOpMode{
             // Turn off RUN_TO_POSITION
             robot.leftMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
             robot.rightMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-
-            //  sleep(250);   // optional pause after each move
         }
-    }
-
-
-
-
-        /*commandBothMotors(1, 3);
-        commandBothMotors(0, 2);
-        commandBothMotors(-0.5f, 8);
-        robot.rightMotor.setPower(0);
-        robot.leftMotor.setPower(0);
-        */
-
-
-    void commandBothMotors(float pwr, int time){
-        robot.leftMotor.setPower(pwr);
-        robot.rightMotor.setPower(pwr);
-        sleep( time*1000);
     }
 }

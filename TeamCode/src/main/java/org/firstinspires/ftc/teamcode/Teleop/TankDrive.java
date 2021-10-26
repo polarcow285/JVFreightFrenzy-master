@@ -13,6 +13,7 @@ public class TankDrive extends LinearOpMode{
         robot.init(hardwareMap);
 
         float speedMultiplier = 1;
+        int clawPosition = 0;
 
         //wait for start button to be pressed
         waitForStart();
@@ -29,20 +30,35 @@ public class TankDrive extends LinearOpMode{
                 }
 
             }
+
             robot.leftMotor.setPower(speedMultiplier * -gamepad1.left_stick_y);
             robot.rightMotor.setPower(speedMultiplier * -gamepad1.right_stick_y);
 
             if(gamepad1.left_bumper == true){
                 robot.armMotor.setPower(1f);
             }
-            else{
+            else {
                 robot.armMotor.setPower(0);
             }
+
             if(gamepad1.right_bumper == true){
                 robot.armMotor.setPower(-1f);
             }
             else{
                 robot.armMotor.setPower(0);
+            }
+
+            if (robot.armMotor.getCurrentPosition()>= 3000 || robot.armMotor.getCurrentPosition()<=0) {
+                robot.armMotor.setPower(0);
+            }
+
+            if(gamepad1.a){
+                if(clawPosition == 0) {
+                    robot.clawServo.setPosition(1);
+                }
+                else {
+                    robot.clawServo.setPosition(0);
+                }
             }
         }
         robot.leftMotor.setPower(0);
