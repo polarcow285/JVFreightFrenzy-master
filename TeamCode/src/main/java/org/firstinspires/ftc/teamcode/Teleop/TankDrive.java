@@ -1,6 +1,8 @@
 package org.firstinspires.ftc.teamcode.Teleop;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.hardware.DcMotor;
+
 import org.firstinspires.ftc.teamcode.Projects.ProjectTank;
 
 @TeleOp(name="TankDrive")
@@ -11,6 +13,7 @@ public class TankDrive extends LinearOpMode{
     public void runOpMode() throws InterruptedException {
         //initialize hardware map
         robot.init(hardwareMap);
+        robot.armMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
         float speedMultiplier = 1;
         int clawPosition = 0;
@@ -35,22 +38,22 @@ public class TankDrive extends LinearOpMode{
             robot.rightMotor.setPower(speedMultiplier * -gamepad1.right_stick_y);
 
             if(gamepad1.left_bumper == true){
-                robot.armMotor.setPower(1f);
+                robot.armMotor.setPower(1);
             }
             else {
                 robot.armMotor.setPower(0);
             }
 
             if(gamepad1.right_bumper == true){
-                robot.armMotor.setPower(-1f);
+                robot.armMotor.setPower(-1);
             }
             else{
                 robot.armMotor.setPower(0);
             }
 
-            if (robot.armMotor.getCurrentPosition()>= 3000 || robot.armMotor.getCurrentPosition()<=0) {
-                robot.armMotor.setPower(0);
-            }
+           // if (robot.armMotor.getCurrentPosition()>= 3000 || robot.armMotor.getCurrentPosition()<=0) {
+               // robot.armMotor.setPower(0);
+           // }
 
             if(gamepad1.a){
                 if(clawPosition == 0) {
@@ -63,6 +66,7 @@ public class TankDrive extends LinearOpMode{
         }
         robot.leftMotor.setPower(0);
         robot.rightMotor.setPower(0);
+        robot.armMotor.setPower(0);
 
     }
 

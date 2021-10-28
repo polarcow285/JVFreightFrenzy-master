@@ -42,6 +42,6 @@ public class ProjectTank extends Project{
         rightMotor.setPower(0);
         leftMotor.setPower(0);
 
-        //armMotor.setPower(0);
+        armMotor.setPower(0);
     }
 }
