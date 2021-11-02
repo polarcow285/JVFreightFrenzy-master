@@ -28,8 +28,7 @@ public class ParkingAutoClose extends LinearOpMode{
 
         //3000 forward
         //460 encoder counts = 1 square
-
-        encoderDrive(.7, 600, 600);
+        //encoderDrive(.7, 600, 600);
 
     }
 
