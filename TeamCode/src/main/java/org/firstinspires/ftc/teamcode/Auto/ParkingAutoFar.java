@@ -5,7 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-@Autonomous(name="ParkingAutoFar")
+/*@Autonomous(name="ParkingAutoFar")
 //"tag" that is displayed on driver hub
 public class ParkingAutoFar extends LinearOpMode {
     //creating robot object
@@ -75,6 +75,6 @@ public class ParkingAutoFar extends LinearOpMode {
             // Turn off RUN_TO_POSITION
             robot.leftMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
             robot.rightMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        }
-    }
-}
+        }*/
+   // }
+//}

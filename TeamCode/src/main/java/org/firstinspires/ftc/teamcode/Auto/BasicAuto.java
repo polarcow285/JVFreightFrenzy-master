@@ -5,7 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-@Autonomous(name="BasicAuto")
+/*@Autonomous(name="BasicAuto")
 //"tag" that is displayed on driver hub
 public class BasicAuto extends LinearOpMode {
     //creating robot object
@@ -92,4 +92,4 @@ public class BasicAuto extends LinearOpMode {
         */
 
 
-}
+//}
