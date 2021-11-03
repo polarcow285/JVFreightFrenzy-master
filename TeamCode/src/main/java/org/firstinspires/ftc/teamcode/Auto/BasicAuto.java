@@ -5,7 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-/*@Autonomous(name="BasicAuto")
+@Autonomous(name="BasicAuto")
 //"tag" that is displayed on driver hub
 public class BasicAuto extends LinearOpMode {
     //creating robot object
@@ -15,8 +15,8 @@ public class BasicAuto extends LinearOpMode {
     public void runOpMode() throws InterruptedException {
         //initialize hardware map
         robot.init(hardwareMap);
-        robot.rightMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        robot.leftMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        //robot.rightMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        //robot.leftMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
         //wait for start button to be pressed
         waitForStart();
@@ -26,16 +26,16 @@ public class BasicAuto extends LinearOpMode {
 
         encoderDrive(.7, 460, 460);
         encoderDrive(.7, -115, 115);
-        //encoderDrive(.7, 460, 460);
+        encoderDrive(.7, 460, 460);
 
     }
 
-
     public void encoderDrive(double speed,
                              double leftCounts, double rightCounts) {
+
         int newLeftTarget;
         int newRightTarget;
-
+        /*
         // Ensure that the opmode is still active
         if (opModeIsActive()) {
 
@@ -78,18 +78,9 @@ public class BasicAuto extends LinearOpMode {
             robot.rightMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
             //  sleep(250);   // optional pause after each move
-        }
+        */
     }
 
 
 
-
-        /*commandBothMotors(1, 3);
-        commandBothMotors(0, 2);
-        commandBothMotors(-0.5f, 8);
-        robot.rightMotor.setPower(0);
-        robot.leftMotor.setPower(0);
-        */
-
-
-//}
+}

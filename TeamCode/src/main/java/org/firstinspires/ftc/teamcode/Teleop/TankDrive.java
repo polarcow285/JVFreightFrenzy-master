@@ -13,20 +13,24 @@ public class TankDrive extends LinearOpMode{
     public void runOpMode() throws InterruptedException {
         //initialize hardware map
         robot.init(hardwareMap);
-        robot.armMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+
 
         float speedMultiplier = 1;
         int clawPosition = 0;
 
         //wait for start button to be pressed
         waitForStart();
+        //robot.armMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
         //write teleop code here
 
+        //top level: -107
+        //middle level: -45
+        //bottom level: -15
         while(opModeIsActive()) {
             telemetry.addData("armmotor", robot.armMotor.getCurrentPosition());
             telemetry.update();
-            if(gamepad2.y){
+            if(gamepad1.y){
                 if(speedMultiplier == 1) {
                     speedMultiplier = 0.5f;
                 }
@@ -40,29 +44,14 @@ public class TankDrive extends LinearOpMode{
             //robot.rightMotor.setPower(speedMultiplier * -gamepad1.right_stick_y);
 
 
+            //Controls spin motor
+            //future: only use one button
             if(gamepad2.dpad_left) {
                 robot.spinMotor.setPower(-0.7);
             }
             if(gamepad2.dpad_right) {
                 robot.spinMotor.setPower(0);
             }
-
-           if (robot.armMotor.getCurrentPosition()>= -8000) {
-               telemetry.addData("hello", "hello");
-               if(gamepad2.dpad_up){
-                   robot.armMotor.setPower(-1);
-                   //encoderDrive(1,-10000);
-               }
-               else {
-                   robot.armMotor.setPower(0);
-               }
-               if(gamepad2.dpad_down){
-                   robot.armMotor.setPower(1);
-                   //encoderDrive(0.5,10000);
-               } else {
-                   robot.armMotor.setPower(0);
-               }
-           }
 
             if(gamepad2.a){
                 if(clawPosition == 0) {
@@ -73,6 +62,39 @@ public class TankDrive extends LinearOpMode{
                 }
             }
             //robot.clawServo.setPosition(clawPosition);
+
+            //move the armMotor up
+            if(gamepad2.dpad_up){
+                robot.armMotor.setPower(-0.55);
+            }else{
+                robot.armMotor.setPower(0);
+            }
+            //hold the arm at the current position
+            if(gamepad2.b){
+                robot.armMotor.setPower(-0.3);
+
+
+                /*robot.armMotor.setTargetPosition(-90);
+                robot.armMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                robot.armMotor.setPower(1);
+                robot.armMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+                */
+
+            }
+
+
+           /*if (robot.armMotor.getCurrentPosition()>= -100) {
+               telemetry.addData("hello", "hello");
+
+               if(gamepad2.dpad_up){
+                   robot.armMotor.setPower(-0.55);
+               }
+               else{
+                   robot.armMotor.setPower(0);
+               }
+           }*/
+
+
         }
         //robot.leftMotor.setPower(0);
         //robot.rightMotor.setPower(0);
