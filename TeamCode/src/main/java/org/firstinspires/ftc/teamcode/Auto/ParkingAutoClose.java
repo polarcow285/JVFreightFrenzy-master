@@ -5,7 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-/*@Autonomous(name="ParkingAutoClose")
+@Autonomous(name="ParkingAutoClose")
 //"tag" that is displayed on driver hub
 public class ParkingAutoClose extends LinearOpMode{
     //creating robot object
@@ -28,7 +28,7 @@ public class ParkingAutoClose extends LinearOpMode{
 
         //3000 forward
         //460 encoder counts = 1 square
-        //encoderDrive(.7, 600, 600);
+        encoderDrive(.7, 600, 600);
 
     }
 
@@ -94,9 +94,9 @@ public class ParkingAutoClose extends LinearOpMode{
         */
 
 
-    /*void commandBothMotors(float pwr, int time){
+    void commandBothMotors(float pwr, int time){
         robot.leftMotor.setPower(pwr);
         robot.rightMotor.setPower(pwr);
         sleep( time*1000);
     }
-}*/
+}
