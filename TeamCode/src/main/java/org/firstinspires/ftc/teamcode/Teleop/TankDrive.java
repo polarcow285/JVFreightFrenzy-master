@@ -17,6 +17,7 @@ public class TankDrive extends LinearOpMode{
 
         float speedMultiplier = 1;
         int clawPosition = 0;
+        double spinSpeed = 0;
 
         //wait for start button to be pressed
         waitForStart();
@@ -40,19 +41,22 @@ public class TankDrive extends LinearOpMode{
 
             }
 
-            //robot.leftMotor.setPower(speedMultiplier * -gamepad1.left_stick_y);
-            //robot.rightMotor.setPower(speedMultiplier * -gamepad1.right_stick_y);
+            robot.leftMotor.setPower(speedMultiplier * -gamepad1.left_stick_y);
+            robot.rightMotor.setPower(speedMultiplier * -gamepad1.right_stick_y);
 
 
             //Controls spin motor
             //future: only use one button
             if(gamepad2.dpad_left) {
-                robot.spinMotor.setPower(-0.7);
+                if (spinSpeed == 0) {
+                    spinSpeed = -0.7;
+                }
+                else{
+                    spinSpeed = 0;
+                }
             }
-            if(gamepad2.dpad_right) {
-                robot.spinMotor.setPower(0);
-            }
-
+            robot.spinMotor.setPower(spinSpeed);
+            //claw
             if(gamepad2.a){
                 if(clawPosition == 0) {
                     clawPosition = 1;
@@ -61,17 +65,25 @@ public class TankDrive extends LinearOpMode{
                     clawPosition = 0;
                 }
             }
-            //robot.clawServo.setPosition(clawPosition);
+            robot.clawServo.setPosition(clawPosition);
+
+
 
             //move the armMotor up
-            if(gamepad2.dpad_up){
+            if(gamepad2.left_bumper){
                 robot.armMotor.setPower(-0.55);
             }else{
                 robot.armMotor.setPower(0);
             }
             //hold the arm at the current position
-            if(gamepad2.b){
+            if(gamepad2.right_bumper) {
                 robot.armMotor.setPower(-0.3);
+
+            }
+
+            if(gamepad2.left_bumper && gamepad2.right_bumper){
+                robot.armMotor.setPower(-0.55);
+            }
 
 
                 /*robot.armMotor.setTargetPosition(-90);
@@ -80,7 +92,8 @@ public class TankDrive extends LinearOpMode{
                 robot.armMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
                 */
 
-            }
+
+
 
 
            /*if (robot.armMotor.getCurrentPosition()>= -100) {
@@ -96,8 +109,8 @@ public class TankDrive extends LinearOpMode{
 
 
         }
-        //robot.leftMotor.setPower(0);
-        //robot.rightMotor.setPower(0);
+        robot.leftMotor.setPower(0);
+        robot.rightMotor.setPower(0);
         robot.armMotor.setPower(0);
         robot.spinMotor.setPower(0);
 
