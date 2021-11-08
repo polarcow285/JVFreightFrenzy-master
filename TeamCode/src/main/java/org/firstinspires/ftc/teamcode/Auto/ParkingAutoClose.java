@@ -27,8 +27,8 @@ public class ParkingAutoClose extends LinearOpMode{
         //robot.leftMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
         //3000 forward
-        //460 encoder counts = 1 square
-        encoderDrive(.7, 600, 600);
+        //3250 encoder counts = 1 square
+        encoderDrive(1, 4000, 4000);
 
     }
 

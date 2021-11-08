@@ -16,8 +16,9 @@ public class TankDrive extends LinearOpMode{
 
 
         float speedMultiplier = 1;
-        int clawPosition = 0;
         double spinSpeed = 0;
+        boolean aPressed = false;
+        boolean isClawClosed = false;
 
         //wait for start button to be pressed
         waitForStart();
@@ -49,7 +50,7 @@ public class TankDrive extends LinearOpMode{
             //future: only use one button
             if(gamepad2.dpad_left) {
                 if (spinSpeed == 0) {
-                    spinSpeed = -0.7;
+                    spinSpeed = 0.7;
                 }
                 else{
                     spinSpeed = 0;
@@ -58,14 +59,20 @@ public class TankDrive extends LinearOpMode{
             robot.spinMotor.setPower(spinSpeed);
             //claw
             if(gamepad2.a){
-                if(clawPosition == 0) {
-                    clawPosition = 1;
-                }
-                else {
-                    clawPosition = 0;
+                if(aPressed == false) {
+                     aPressed = true;
+                     isClawClosed = !isClawClosed;
+                     if(isClawClosed == true) {
+                         robot.clawServo.setPosition(0);
+                     }
+                     else {
+                         robot.clawServo.setPosition(1);
+                    }
                 }
             }
-            robot.clawServo.setPosition(clawPosition);
+            else {
+                aPressed = false;
+            }
 
 
 

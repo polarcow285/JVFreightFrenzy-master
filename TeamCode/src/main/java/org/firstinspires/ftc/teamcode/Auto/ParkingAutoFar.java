@@ -29,7 +29,7 @@ public class ParkingAutoFar extends LinearOpMode {
         //robot.armMotor.setPower(-0.55);
         //sleep(2000);
         //robot.armMotor.setPower(-0.3);
-        encoderDrive(1,3340*4,3340*4);
+        encoderDrive(1,3500*3,3500*3);
 
 
     }
