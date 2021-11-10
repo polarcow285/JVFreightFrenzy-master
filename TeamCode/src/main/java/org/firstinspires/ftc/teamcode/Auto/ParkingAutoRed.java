@@ -5,9 +5,9 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-@Autonomous(name="ParkingAutoClose")
+@Autonomous(name="ParkingAutoRed")
 //"tag" that is displayed on driver hub
-public class ParkingAutoClose extends LinearOpMode{
+public class ParkingAutoRed extends LinearOpMode{
     //creating robot object
     public ProjectTank robot = new ProjectTank();
 
@@ -28,8 +28,10 @@ public class ParkingAutoClose extends LinearOpMode{
 
         //3000 forward
         //3250 encoder counts = 1 square
-        robot.spinMotor.setPower(1);
-        encoderDrive(1,-3400*3,-3400*3);
+        encoderDrive(1,-1600,-1600);
+        encoderDrive(1,-900,900);
+        robot.spinMotor.setPower(-1);
+        sleep(10000);
 
 
     }

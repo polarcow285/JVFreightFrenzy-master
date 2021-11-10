@@ -30,7 +30,7 @@ public class TankDrive extends LinearOpMode{
         //middle level: -45
         //bottom level: -15
         while(opModeIsActive()) {
-            if(gamepad1.y){
+            if(gamepad1.right_bumper){
                 if(speedMultiplier == 1) {
                     speedMultiplier = 0.5f;
                 }
@@ -85,19 +85,23 @@ public class TankDrive extends LinearOpMode{
             //move the armMotor up
             if(gamepad2.left_bumper){
                 robot.armMotor.setPower(-0.55);
-            }else{
+            }
+            else{
                 robot.armMotor.setPower(0);
             }
             //hold the arm at the current position
             if(gamepad2.right_bumper) {
                 robot.armMotor.setPower(-0.3);
-
             }
-
+            else {
+                robot.armMotor.setPower(0);
+            }
             if(gamepad2.left_bumper && gamepad2.right_bumper){
                 robot.armMotor.setPower(-0.55);
             }
-
+            else {
+                robot.armMotor.setPower(0);
+            }
             if (gamepad2.x){
                 robot.armMotor.setPower(0.55);
             }
