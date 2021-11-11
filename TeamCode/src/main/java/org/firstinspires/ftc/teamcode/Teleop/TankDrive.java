@@ -84,7 +84,7 @@ public class TankDrive extends LinearOpMode{
 
             //move the armMotor up
             if(gamepad2.left_bumper){
-                robot.armMotor.setPower(-0.55);
+                robot.armMotor.setPower(-0.85);
             }
             else{
                 robot.armMotor.setPower(0);
@@ -97,7 +97,7 @@ public class TankDrive extends LinearOpMode{
                 robot.armMotor.setPower(0);
             }
             if(gamepad2.left_bumper && gamepad2.right_bumper){
-                robot.armMotor.setPower(-0.55);
+                robot.armMotor.setPower(-0.85);
             }
             else {
                 robot.armMotor.setPower(0);

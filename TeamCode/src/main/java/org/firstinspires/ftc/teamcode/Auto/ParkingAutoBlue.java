@@ -32,7 +32,7 @@ public class ParkingAutoBlue extends LinearOpMode {
 
         encoderDrive(1,-1600,-1600);
         encoderDrive(1,-500,500);
-        encoderDrive(1,-100, -100);
+        encoderDrive(1,-120, -120);
         robot.spinMotor.setPower(1);
         sleep(10000);
 
