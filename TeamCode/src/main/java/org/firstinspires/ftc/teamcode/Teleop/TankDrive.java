@@ -84,26 +84,17 @@ public class TankDrive extends LinearOpMode{
 
             //move the armMotor up
             if(gamepad2.left_bumper){
-                robot.armMotor.setPower(1);
-            }
-            else{
-                robot.armMotor.setPower(0);
+                robot.armMotor.setPower(0.5);
             }
             //hold the arm at the current position
-            if(gamepad2.right_bumper) {
-                robot.armMotor.setPower(0.3);
+            else if(gamepad2.right_bumper) {
+                robot.armMotor.setPower(0.2);
             }
-            else {
-                robot.armMotor.setPower(0);
+            else if(gamepad2.left_bumper && gamepad2.right_bumper){
+                robot.armMotor.setPower(0.5);
             }
-            if(gamepad2.left_bumper && gamepad2.right_bumper){
-                robot.armMotor.setPower(1);
-            }
-            else {
-                robot.armMotor.setPower(0);
-            }
-            if (gamepad2.x){
-                robot.armMotor.setPower(-0.55);
+            else if (gamepad2.x){
+                robot.armMotor.setPower(-.75);
             }
             else {
                 robot.armMotor.setPower(0);
