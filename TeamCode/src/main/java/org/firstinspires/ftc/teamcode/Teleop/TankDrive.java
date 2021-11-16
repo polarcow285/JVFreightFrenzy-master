@@ -17,6 +17,12 @@ public class TankDrive extends LinearOpMode{
 
         float speedMultiplier = 1;
         double spinSpeed = 0;
+        boolean rightBumperPressed = false;
+        boolean isSpeedMultiplierOn = false;
+        boolean dPadLeftPressed = false;
+        boolean isCarouselSpinningLeft = false;
+        boolean dPadRightPressed = false;
+        boolean isCarouselSpinningRight = false;
         boolean aPressed = false;
         boolean isClawClosed = false;
 
@@ -30,6 +36,25 @@ public class TankDrive extends LinearOpMode{
         //middle level: -45
         //bottom level: -15
         while(opModeIsActive()) {
+            //new speed multiplier
+            /*if(gamepad1.right_bumper){
+                if(rightBumperPressed == false) {
+                    rightBumperPressed = true;
+                    isSpeedMultiplierOn = !isSpeedMultiplierOn;
+                    if(isSpeedMultiplierOn == true) {
+                        robot.leftMotor.setPower(0.4);
+                        robot.rightMotor.setPower(0.4);
+                    }
+                    else {
+                        robot.leftMotor.setPower(0.8);
+                        robot.rightMotor.setPower(0.8);
+                    }
+                }
+            }
+            else {
+                rightBumperPressed = false;
+            }*/
+            //original speed multiplier code
             if(gamepad1.right_bumper){
                 if(speedMultiplier == 1) {
                     speedMultiplier = 0.5f;
@@ -37,16 +62,46 @@ public class TankDrive extends LinearOpMode{
                 else{
                     speedMultiplier = 1;
                 }
-
             }
-
             robot.leftMotor.setPower(speedMultiplier * -gamepad1.left_stick_y);
             robot.rightMotor.setPower(speedMultiplier * -gamepad1.right_stick_y);
 
-
             //Controls spin motor
             //future: only use one button
-            if(gamepad2.dpad_left) {
+            /*if(gamepad1.dpad_left){
+                if(dPadLeftPressed == false) {
+                    dPadLeftPressed = true;
+                    isCarouselSpinningLeft = !isCarouselSpinningLeft;
+                    if(isCarouselSpinningLeft == true) {
+                        robot.spinMotor.setPower(1);
+                    }
+                    else {
+                        robot.spinMotor.setPower(0);
+                    }
+                }
+            }
+            else {
+                dPadLeftPressed = false;
+            }
+
+            if(gamepad1.dpad_right){
+                if(dPadRightPressed == false) {
+                    dPadRightPressed = true;
+                    isCarouselSpinningRight = !isCarouselSpinningRight;
+                    if(isCarouselSpinningRight == true) {
+                        robot.spinMotor.setPower(-1);
+                    }
+                    else {
+                        robot.spinMotor.setPower(0);
+                    }
+                }
+            }
+            else {
+                dPadRightPressed = false;
+            }*/
+
+            //original carousel code
+            /*if(gamepad2.dpad_left) {
                 if (spinSpeed == 0) {
                     spinSpeed = 1;
                 }
@@ -62,7 +117,8 @@ public class TankDrive extends LinearOpMode{
                     spinSpeed = 0;
                 }
             }
-            robot.spinMotor.setPower(spinSpeed);
+            robot.spinMotor.setPower(spinSpeed);*/
+
             //claw
             if(gamepad2.a){
                 if(aPressed == false) {
