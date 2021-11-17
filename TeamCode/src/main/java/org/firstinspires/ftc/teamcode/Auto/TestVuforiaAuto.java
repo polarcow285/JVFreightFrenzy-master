@@ -25,7 +25,31 @@ public class TestVuforiaAuto extends LinearOpMode{
         parameters.cameraName = robot.camera;
 
         VuforiaLocalizer vuforia = ClassFactory.getInstance().createVuforia(parameters);
-        VuforiaTrackables trackables = vuforia.loadTrackablesFromAsset(" /*name of the dat/xml file found in FTCRobotController > assets *\ ");
+        VuforiaTrackables trackables = vuforia.loadTrackablesFromAsset("Skystone");
+
+        //An image of a redpanda is the first image in the list
+        //gets first trackable (image)
+        VuforiaTrackable shippingTrackable = trackables.get(0);
+       shippingTrackable.setName("shippingTrackable");
+
+
+        trackables.activate();
+
+        //create listener based on trackable
+        VuforiaTrackableDefaultListener shippingListener;
+        shippingListener = (VuforiaTrackableDefaultListener) shippingTrackable.getListener();
+
+        OpenGLMatrix shippingLocation = null;
+
+        waitForStart();
+
+        while(opModeIsActive()){
+            shippingLocation = shippingListener.getUpdatedRobotLocation();
+
+
+
+        }
+
 
 
 

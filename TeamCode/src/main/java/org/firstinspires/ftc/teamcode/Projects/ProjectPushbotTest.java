@@ -1,10 +1,12 @@
 package org.firstinspires.ftc.teamcode.Projects;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
+import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
 
 public class ProjectPushbotTest extends Project{
     public DcMotor rightMotor = null;
     public DcMotor leftMotor = null;
+    public WebcamName camera = null;
 
     @Override
     public void init(HardwareMap ahwMap) {
