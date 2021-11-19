@@ -10,7 +10,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackable;
 import org.firstinspires.ftc.robotcore.external.matrices.OpenGLMatrix;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackableDefaultListener;
 
-
+/*
 @Autonomous(name = "TestVuforiaAuto")
 public class TestVuforiaAuto extends LinearOpMode{
     public ProjectPushbotTest robot = new ProjectPushbotTest();
@@ -54,4 +54,4 @@ public class TestVuforiaAuto extends LinearOpMode{
 
 
     }
-}
+}*/

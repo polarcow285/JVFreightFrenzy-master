@@ -56,11 +56,11 @@ public class TankDrive extends LinearOpMode{
             }*/
             //original speed multiplier code
             if(gamepad1.right_bumper){
-                if(speedMultiplier == 1) {
+                if(speedMultiplier == 0.8f) {
                     speedMultiplier = 0.5f;
                 }
                 else{
-                    speedMultiplier = 1;
+                    speedMultiplier = 0.8f;
                 }
             }
             robot.leftMotor.setPower(speedMultiplier * -gamepad1.left_stick_y);
@@ -140,7 +140,17 @@ public class TankDrive extends LinearOpMode{
 
             //move the armMotor up
             if(gamepad2.left_bumper){
-                robot.armMotor.setPower(0.5);
+
+                if (robot.armMotor.getCurrentPosition() > 50){
+                    robot.armMotor.setPower(0);
+                }
+
+
+                robot.armMotor.setPower(0.35);
+
+                telemetry.addData("armMotorCount", robot.armMotor.getCurrentPosition());
+                telemetry.update();
+
             }
             //hold the arm at the current position
             else if(gamepad2.right_bumper) {
@@ -151,10 +161,16 @@ public class TankDrive extends LinearOpMode{
             }
             else if (gamepad2.x){
                 robot.armMotor.setPower(-.75);
+
             }
             else {
                 robot.armMotor.setPower(0);
             }
+
+
+
+            telemetry.addData("armMotorCount", robot.armMotor.getCurrentPosition());
+            telemetry.update();
 
 
                 /*robot.armMotor.setTargetPosition(-90);
