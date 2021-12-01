@@ -80,24 +80,39 @@ public class TankDrive extends LinearOpMode{
             }
 
 
-
-            //move the armMotor up
-            if(gamepad2.left_bumper){
+            /*original armMotor left bumper code
+            if(gamepad2.left_bumper == true){
 
                 //if (robot.armMotor.getCurrentPosition() > 300){
                    // robot.armMotor.setPower(0);
                 //}
+                robot.armMotor.setPower(0.4); <-- this happens regardless of whether the arm motor is at its limit,
+                                                    making the limit kinda ineffective/unreliable.
+
+            }
+             A problem with this code is that you're setting the power to 0, then you immediately set it to 0.4
+             regardless of whether the arm motor has reached its limit. As a result, the arm motor was moving even
+             though it was past its limit.
+
+            */
 
 
-                robot.armMotor.setPower(0.35);
+
+            
+            //move the armMotor up
+
+            //if the arm motor is within its limit, then it can move.
+            if(gamepad2.left_bumper && robot.armMotor.getCurrentPosition() < 300){
+                robot.armMotor.setPower(0.4);
 
             }
             //hold the arm at the current position
             else if(gamepad2.right_bumper) {
                 robot.armMotor.setPower(0.2);
             }
+            //might have to readjust the code for these controls?
             else if(gamepad2.left_bumper && gamepad2.right_bumper){
-                robot.armMotor.setPower(0.35);
+                robot.armMotor.setPower(0.4);
             }
             else {
                 robot.armMotor.setPower(0);
