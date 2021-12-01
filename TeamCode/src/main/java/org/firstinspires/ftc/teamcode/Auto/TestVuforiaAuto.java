@@ -10,7 +10,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackable;
 import org.firstinspires.ftc.robotcore.external.matrices.OpenGLMatrix;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackableDefaultListener;
 
-/*
+
 @Autonomous(name = "TestVuforiaAuto")
 public class TestVuforiaAuto extends LinearOpMode{
     public ProjectPushbotTest robot = new ProjectPushbotTest();
@@ -45,13 +45,24 @@ public class TestVuforiaAuto extends LinearOpMode{
 
         while(opModeIsActive()){
             shippingLocation = shippingListener.getUpdatedRobotLocation();
+            telemetry.addData("location of shipping element", formatMatrix(shippingLocation));
+            telemetry.update();
+            /*if(shippingLocation != null) {
+                float x = shippingLocation.getTranslation().get(0);
+                if (x>30){
 
-
-
+                }
+                else if
+            }*/
         }
 
-
-
-
     }
-}*/
+    String formatMatrix(OpenGLMatrix matrix){
+        if(matrix != null){
+            return matrix.formatAsTransform();
+        }
+        else{
+            return "not found";
+        }
+    }
+}
