@@ -28,12 +28,14 @@ public class ParkingAutoRed extends LinearOpMode{
 
         //3000 forward
         //3250 encoder counts = 1 square
+        robot.clawServo.setPosition(0);
         encoderDrive(1,-1600,-1600);
-        encoderDrive(1,-900,900);
+        encoderDrive(1,-1000,1000);
         robot.spinMotor.setPower(-1);
-        sleep(10000);
-
-
+        sleep(3000);
+        encoderDrive(1,700,700);
+        encoderDrive(1,-900,900);
+        encoderDrive(1,2700,2700);
     }
 
 
