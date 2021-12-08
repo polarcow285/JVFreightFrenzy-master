@@ -5,9 +5,9 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-@Autonomous(name="ParkingAutoRed")
+@Autonomous(name="ParkingAutoRedClose")
 //"tag" that is displayed on driver hub
-public class ParkingAutoRed extends LinearOpMode{
+public class ParkingAutoRedClose extends LinearOpMode {
     //creating robot object
     public ProjectTank robot = new ProjectTank();
 
@@ -23,21 +23,19 @@ public class ParkingAutoRed extends LinearOpMode{
 
         //write autonomous code here
 
-        //robot.rightMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        //robot.leftMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        //3250 encoder counts = 1 tile
 
-        //3000 forward
-        //3250 encoder counts = 1 square
-        robot.clawServo.setPosition(0);
-        encoderDrive(1,-1600,-1600);
-        encoderDrive(1,-1000,1000);
-        robot.spinMotor.setPower(-1);
-        sleep(3000);
-        encoderDrive(1,700,700);
-        encoderDrive(1,-900,900);
-        encoderDrive(1,2700,2700);
+        //encoderDrive(1, 3340, 3340);
+        //robot.armMotor.setPower(-0.55);
+        //sleep(2000);
+        //robot.armMotor.setPower(-0.3);
+
+        robot.clawServo.setPosition(1);
+        encoderDrive(1,3500,3500);
+        encoderDrive(1,1600,-1600);
+        encoderDrive(1,4500,4500);
+
     }
-
 
     public void encoderDrive(double speed,
                              double leftCounts, double rightCounts) {
@@ -48,8 +46,8 @@ public class ParkingAutoRed extends LinearOpMode{
         if (opModeIsActive()) {
 
             // Determine new target position, and pass to motor controller
-            newLeftTarget = robot.leftMotor.getCurrentPosition() + (int)(leftCounts);
-            newRightTarget = robot.rightMotor.getCurrentPosition() + (int)(rightCounts);
+            newLeftTarget = robot.leftMotor.getCurrentPosition() + (int) (leftCounts);
+            newRightTarget = robot.rightMotor.getCurrentPosition() + (int) (rightCounts);
             robot.leftMotor.setTargetPosition(newLeftTarget);
             robot.rightMotor.setTargetPosition(newRightTarget);
 
@@ -70,8 +68,8 @@ public class ParkingAutoRed extends LinearOpMode{
                     (robot.leftMotor.isBusy() && robot.rightMotor.isBusy())) {
 
                 // Display it for the driver.
-                telemetry.addData("Path1",  "Running to %7d :%7d", newLeftTarget,  newRightTarget);
-                telemetry.addData("Path2",  "Running at %7d :%7d",
+                telemetry.addData("Path1", "Running to %7d :%7d", newLeftTarget, newRightTarget);
+                telemetry.addData("Path2", "Running at %7d :%7d",
                         robot.leftMotor.getCurrentPosition(),
                         robot.rightMotor.getCurrentPosition());
                 telemetry.update();
@@ -84,25 +82,6 @@ public class ParkingAutoRed extends LinearOpMode{
             // Turn off RUN_TO_POSITION
             robot.leftMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
             robot.rightMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-
-            //  sleep(250);   // optional pause after each move
         }
-    }
-
-
-
-
-        /*commandBothMotors(1, 3);
-        commandBothMotors(0, 2);
-        commandBothMotors(-0.5f, 8);
-        robot.rightMotor.setPower(0);
-        robot.leftMotor.setPower(0);
-        */
-
-
-    void commandBothMotors(float pwr, int time){
-        robot.leftMotor.setPower(pwr);
-        robot.rightMotor.setPower(pwr);
-        sleep( time*1000);
     }
 }

@@ -5,9 +5,9 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-@Autonomous(name="ParkingAutoBlue")
+@Autonomous(name="ParkingAutoBlueFar")
 //"tag" that is displayed on driver hub
-public class ParkingAutoBlue extends LinearOpMode {
+public class ParkingAutoBlueFar extends LinearOpMode {
     //creating robot object
     public ProjectTank robot = new ProjectTank();
 
