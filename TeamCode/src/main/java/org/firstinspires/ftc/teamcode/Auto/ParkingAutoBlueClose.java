@@ -30,10 +30,10 @@ public class ParkingAutoBlueClose extends LinearOpMode {
         //sleep(2000);
         //robot.armMotor.setPower(-0.3);
 
-        robot.clawServo.setPosition(0);
+        robot.clawServo.setPosition(1);
         encoderDrive(1,3500,3500);
         encoderDrive(1,-1600,1600);
-        encoderDrive(1,4500,4500);
+        encoderDrive(1,5500,5500);
     }
 
     public void encoderDrive(double speed,

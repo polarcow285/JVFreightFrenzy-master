@@ -33,7 +33,7 @@ public class ParkingAutoRedClose extends LinearOpMode {
         robot.clawServo.setPosition(1);
         encoderDrive(1,3500,3500);
         encoderDrive(1,1600,-1600);
-        encoderDrive(1,4500,4500);
+        encoderDrive(1,5500,5500);
 
     }
 

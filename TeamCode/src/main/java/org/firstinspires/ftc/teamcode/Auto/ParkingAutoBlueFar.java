@@ -30,7 +30,7 @@ public class ParkingAutoBlueFar extends LinearOpMode {
         //sleep(2000);
         //robot.armMotor.setPower(-0.3);
 
-        robot.clawServo.setPosition(0);
+        robot.clawServo.setPosition(1);
         encoderDrive(1,-1600,-1600);
         encoderDrive(1,-500,500);
         encoderDrive(1,-250, -250);
@@ -38,10 +38,8 @@ public class ParkingAutoBlueFar extends LinearOpMode {
         sleep(3500);
         encoderDrive(1,600,-600);
         encoderDrive(1,500,500);
-        encoderDrive(1,1300,-1300);
-        encoderDrive(1,2600, 2600);
-        encoderDrive(1,-250,250);
-        encoderDrive(1,400,400);
+        encoderDrive(1,1450,-1450);
+        encoderDrive(1,3150, 3150);
 
     }
 
