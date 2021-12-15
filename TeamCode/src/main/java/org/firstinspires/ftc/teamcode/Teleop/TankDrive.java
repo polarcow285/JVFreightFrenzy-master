@@ -113,7 +113,12 @@ public class TankDrive extends LinearOpMode{
             //might have to readjust the code for these controls?
             else if(gamepad2.left_bumper && gamepad2.right_bumper){
                 robot.armMotor.setPower(0.4);
+
             }
+            else if(gamepad2.x){
+                robot.armMotor.setPower(-0.75);
+            }
+
             else {
                 robot.armMotor.setPower(0);
             }
@@ -129,8 +134,6 @@ public class TankDrive extends LinearOpMode{
                 robot.armMotor.setPower(1);
                 robot.armMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
                 */
-
-
 
 
 

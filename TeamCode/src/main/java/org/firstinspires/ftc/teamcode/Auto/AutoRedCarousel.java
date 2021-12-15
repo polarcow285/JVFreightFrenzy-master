@@ -5,9 +5,9 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-@Autonomous(name="ParkingAutoBlueClose")
+@Autonomous(name="AutoRedCarousel")
 //"tag" that is displayed on driver hub
-public class ParkingAutoBlueClose extends LinearOpMode {
+public class AutoRedCarousel extends LinearOpMode{
     //creating robot object
     public ProjectTank robot = new ProjectTank();
 
@@ -23,18 +23,24 @@ public class ParkingAutoBlueClose extends LinearOpMode {
 
         //write autonomous code here
 
-        //3250 encoder counts = 1 tile
+        //robot.rightMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        //robot.leftMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
-        //encoderDrive(1, 3340, 3340);
-        //robot.armMotor.setPower(-0.55);
-        //sleep(2000);
-        //robot.armMotor.setPower(-0.3);
-
+        //3000 forward
+        //3250 encoder counts = 1 square
+        //81.81 encoder counts = 1 inch
+        //back left corner, blue sign aligned with inside line
         robot.clawServo.setPosition(1);
-        encoderDrive(1,3500,3500);
-        encoderDrive(1,-1600,1600);
-        encoderDrive(1,5500,5500);
+        encoderDrive(0.6,2700,2700);
+        encoderDrive(1,600,-600);
+        encoderDrive(1, -3340,-3340);
+        robot.spinMotor.setPower(-1);
+        sleep(3000);
+        encoderDrive(1,500,500);
+        encoderDrive(1,-1000,1000);
+        encoderDrive(1,2950,2950);
     }
+
 
     public void encoderDrive(double speed,
                              double leftCounts, double rightCounts) {
@@ -45,8 +51,8 @@ public class ParkingAutoBlueClose extends LinearOpMode {
         if (opModeIsActive()) {
 
             // Determine new target position, and pass to motor controller
-            newLeftTarget = robot.leftMotor.getCurrentPosition() + (int) (leftCounts);
-            newRightTarget = robot.rightMotor.getCurrentPosition() + (int) (rightCounts);
+            newLeftTarget = robot.leftMotor.getCurrentPosition() + (int)(leftCounts);
+            newRightTarget = robot.rightMotor.getCurrentPosition() + (int)(rightCounts);
             robot.leftMotor.setTargetPosition(newLeftTarget);
             robot.rightMotor.setTargetPosition(newRightTarget);
 
@@ -67,8 +73,8 @@ public class ParkingAutoBlueClose extends LinearOpMode {
                     (robot.leftMotor.isBusy() && robot.rightMotor.isBusy())) {
 
                 // Display it for the driver.
-                telemetry.addData("Path1", "Running to %7d :%7d", newLeftTarget, newRightTarget);
-                telemetry.addData("Path2", "Running at %7d :%7d",
+                telemetry.addData("Path1",  "Running to %7d :%7d", newLeftTarget,  newRightTarget);
+                telemetry.addData("Path2",  "Running at %7d :%7d",
                         robot.leftMotor.getCurrentPosition(),
                         robot.rightMotor.getCurrentPosition());
                 telemetry.update();
@@ -81,6 +87,25 @@ public class ParkingAutoBlueClose extends LinearOpMode {
             // Turn off RUN_TO_POSITION
             robot.leftMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
             robot.rightMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
+            //  sleep(250);   // optional pause after each move
         }
+    }
+
+
+
+
+        /*commandBothMotors(1, 3);
+        commandBothMotors(0, 2);
+        commandBothMotors(-0.5f, 8);
+        robot.rightMotor.setPower(0);
+        robot.leftMotor.setPower(0);
+        */
+
+
+    void commandBothMotors(float pwr, int time){
+        robot.leftMotor.setPower(pwr);
+        robot.rightMotor.setPower(pwr);
+        sleep( time*1000);
     }
 }
