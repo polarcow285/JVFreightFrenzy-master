@@ -30,7 +30,7 @@ public class AutoRedCarousel extends LinearOpMode{
         //3250 encoder counts = 1 square
         //81.81 encoder counts = 1 inch
         //back left corner, blue sign aligned with inside line
-        robot.clawServo.setPosition(1);
+        //robot.clawServo.setPosition(1);
         encoderDrive(0.6,2700,2700);
         encoderDrive(1,600,-600);
         encoderDrive(1, -3340,-3340);

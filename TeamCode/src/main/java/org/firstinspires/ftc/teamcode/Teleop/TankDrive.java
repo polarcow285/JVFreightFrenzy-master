@@ -16,7 +16,7 @@ public class TankDrive extends LinearOpMode{
 
 
         float speedMultiplier = 1;
-        double spinSpeed = 0;
+        double clawSpeed = 0;
         boolean aPressed = false;
         boolean isClawClosed = false;
 
@@ -45,24 +45,45 @@ public class TankDrive extends LinearOpMode{
             //Controls spin motor
 
             //original carousel code
+            //now its claw code
             if(gamepad2.dpad_left) {
-                if (spinSpeed != 1) {
-                    spinSpeed = 1;
+                if (clawSpeed != 1) {
+                    clawSpeed = 1;
                 }
             }
             if(gamepad2.dpad_right) {
-                if (spinSpeed != -1) {
-                    spinSpeed = -1;
+                if (clawSpeed != -1) {
+                    clawSpeed = -1;
                 }
             }
             if(gamepad2.dpad_down) {
-                if (spinSpeed != 0) {
-                    spinSpeed = 0;
+                if (clawSpeed != 0) {
+                    clawSpeed = 0;
                 }
             }
-            robot.spinMotor.setPower(spinSpeed);
+            robot.clawMotor.setPower(clawSpeed);
 
-            //claw
+            //carousel
+            if(gamepad2.left_trigger > 0){
+                robot.spinMotor.setPower(1);
+            }
+
+            else if(gamepad2.right_trigger > 0){
+                robot.spinMotor.setPower(-1);
+            }
+
+            else if(gamepad2.right_trigger > 0 && gamepad2.left_trigger > 0){
+                robot.spinMotor.setPower(0);
+            }
+
+            else {
+                robot.spinMotor.setPower(0);
+            }
+
+
+
+            //old claw
+            /*
             if(gamepad2.a){
                 if(aPressed == false) {
                      aPressed = true;
@@ -78,7 +99,7 @@ public class TankDrive extends LinearOpMode{
             else {
                 aPressed = false;
             }
-
+            */
 
             /*original armMotor left bumper code
             if(gamepad2.left_bumper == true){

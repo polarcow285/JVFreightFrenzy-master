@@ -29,8 +29,8 @@ public class AutoBlueCarousel extends LinearOpMode {
         //robot.armMotor.setPower(-0.55);
         //sleep(2000);
         //robot.armMotor.setPower(-0.3);
-
-        robot.clawServo.setPosition(1);
+        //arm motor 0.4, 0.2 power for holding
+        //robot.clawServo.setPosition(1);
         encoderDrive(1,-1600,-1600);
         encoderDrive(1,-500,500);
         encoderDrive(1,-250, -250);
@@ -40,6 +40,9 @@ public class AutoBlueCarousel extends LinearOpMode {
         encoderDrive(1,500,500);
         encoderDrive(1,1450,-1450);
         encoderDrive(1,3150, 3150);
+        encoderArm(0.4, 200);
+        encoderArm(0.2, 200);
+
 
     }
 
@@ -88,6 +91,46 @@ public class AutoBlueCarousel extends LinearOpMode {
             // Turn off RUN_TO_POSITION
             robot.leftMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
             robot.rightMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        }
+    }
+
+    public void encoderArm(double speed,
+                             double armCounts) {
+        int newTarget;
+
+        // Ensure that the opmode is still active
+        if (opModeIsActive()) {
+
+            // Determine new target position, and pass to motor controller
+            newTarget = robot.armMotor.getCurrentPosition() + (int)(armCounts);
+            robot.armMotor.setTargetPosition(newTarget);
+
+            // Turn On RUN_TO_POSITION
+            robot.armMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
+            robot.armMotor.setPower(Math.abs(speed));
+
+            // keep looping while we are still active, and there is time left, and both motors are running.
+            // Note: We use (isBusy() && isBusy()) in the loop test, which means that when EITHER motor hits
+            // its target position, the motion will stop.  This is "safer" in the event that the robot will
+            // always end the motion as soon as possible.
+            // However, if you require that BOTH motors have finished their moves before the robot continues
+            // onto the next step, use (isBusy() || isBusy()) in the loop test.
+            /*while (opModeIsActive() &&
+                    (robot.armMotor.isBusy())) {
+
+                // Display it for the driver.
+                telemetry.addData("Path2", robot.armMotor.getCurrentPosition());
+                telemetry.update();
+            }
+
+            // Stop all motion;
+            robot.armMotor.setPower(0);
+               */
+            // Turn off RUN_TO_POSITION
+            robot.armMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
+            //  sleep(250);   // optional pause after each move
         }
     }
 }

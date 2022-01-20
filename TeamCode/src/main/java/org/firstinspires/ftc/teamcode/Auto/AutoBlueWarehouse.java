@@ -30,7 +30,7 @@ public class AutoBlueWarehouse extends LinearOpMode {
         //sleep(2000);
         //robot.armMotor.setPower(-0.3);
 
-        robot.clawServo.setPosition(1);
+        //robot.clawServo.setPosition(1);
         encoderDrive(1,3500,3500);
         encoderDrive(1,-1600,1600);
         encoderDrive(1,5500,5500);
