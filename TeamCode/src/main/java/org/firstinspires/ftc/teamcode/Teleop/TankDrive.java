@@ -123,7 +123,7 @@ public class TankDrive extends LinearOpMode{
             //move the armMotor up
 
             //if the arm motor is within its limit, then it can move.
-            if(gamepad2.left_bumper && robot.armMotor.getCurrentPosition() < 300){
+            if(gamepad2.left_bumper && robot.armMotor.getCurrentPosition() < 426){
                 robot.armMotor.setPower(0.4);
 
             }

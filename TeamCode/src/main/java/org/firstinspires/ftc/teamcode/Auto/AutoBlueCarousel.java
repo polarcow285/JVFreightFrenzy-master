@@ -40,8 +40,12 @@ public class AutoBlueCarousel extends LinearOpMode {
         encoderDrive(1,500,500);
         encoderDrive(1,1450,-1450);
         encoderDrive(1,3150, 3150);
-        encoderArm(0.4, 200);
+        encoderArm(0.6, 200);
         encoderArm(0.2, 200);
+
+
+        telemetry.addData("armMotorCount", robot.armMotor.getCurrentPosition());
+        telemetry.update();
 
 
     }
