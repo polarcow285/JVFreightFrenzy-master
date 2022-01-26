@@ -1,4 +1,5 @@
 package org.firstinspires.ftc.teamcode.Auto;
+import com.acmerobotics.dashboard.FtcDashboard;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import org.firstinspires.ftc.teamcode.Projects.ProjectPushbotTest;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
@@ -27,10 +28,12 @@ public class TestVuforiaAuto extends LinearOpMode{
         VuforiaLocalizer vuforia = ClassFactory.getInstance().createVuforia(parameters);
         VuforiaTrackables trackables = vuforia.loadTrackablesFromAsset("Skystone");
 
+        FtcDashboard.getInstance().startCameraStream(vuforia,0);
+
         //An image of a redpanda is the first image in the list
         //gets first trackable (image)
         VuforiaTrackable shippingTrackable = trackables.get(0);
-       shippingTrackable.setName("shippingTrackable");
+        shippingTrackable.setName("shippingTrackable");
 
 
         trackables.activate();
@@ -44,9 +47,11 @@ public class TestVuforiaAuto extends LinearOpMode{
         waitForStart();
 
         while(opModeIsActive()){
-            shippingLocation = shippingListener.getUpdatedRobotLocation();
+            /*shippingLocation = shippingListener.getUpdatedRobotLocation();
             telemetry.addData("location of shipping element", formatMatrix(shippingLocation));
             telemetry.update();
+            */
+
             /*if(shippingLocation != null) {
                 float x = shippingLocation.getTranslation().get(0);
                 if (x>30){
