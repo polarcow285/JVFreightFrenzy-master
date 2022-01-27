@@ -78,7 +78,7 @@ public class ComplexAuto extends LinearOpMode{
 
 
 
-
+        webcam.stopStreaming();
     }
 
 
