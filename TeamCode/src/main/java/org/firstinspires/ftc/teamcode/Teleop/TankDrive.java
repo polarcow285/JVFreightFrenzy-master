@@ -96,6 +96,7 @@ public class TankDrive extends LinearOpMode{
                     }
                 }
             }
+            //if no bumpers are pressed, then the arm will lower
             else {
                 aPressed = false;
             }
@@ -122,7 +123,7 @@ public class TankDrive extends LinearOpMode{
             
             //move the armMotor up
 
-            //if the arm motor is within its limit, then it can move.
+            //if the arm motor is within its limit, then move the arm up
             if(gamepad2.left_bumper && robot.armMotor.getCurrentPosition() < 426){
                 robot.armMotor.setPower(0.4);
 
@@ -131,7 +132,7 @@ public class TankDrive extends LinearOpMode{
             else if(gamepad2.right_bumper) {
                 robot.armMotor.setPower(0.2);
             }
-            //might have to readjust the code for these controls?
+            //if both bumpers are being held hold, move the arm up
             else if(gamepad2.left_bumper && gamepad2.right_bumper){
                 robot.armMotor.setPower(0.4);
 
