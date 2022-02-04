@@ -25,12 +25,17 @@ public class AutoBlueCarousel extends LinearOpMode {
 
         //3250 encoder counts = 1 tile
 
+
         //encoderDrive(1, 3340, 3340);
         //robot.armMotor.setPower(-0.55);
         //sleep(2000);
         //robot.armMotor.setPower(-0.3);
         //arm motor 0.4, 0.2 power for holding
         //robot.clawServo.setPosition(1);
+
+        //encoderDrive(1,-1600,-1600);
+
+        //original code
         encoderDrive(1,-1600,-1600);
         encoderDrive(1,-500,500);
         encoderDrive(1,-250, -250);
@@ -38,8 +43,8 @@ public class AutoBlueCarousel extends LinearOpMode {
         sleep(3500);
         encoderDrive(1,600,-600);
         encoderDrive(1,500,500);
-        encoderDrive(1,1450,-1450);
-        encoderDrive(1,3150, 3150);
+        encoderDrive(1,1400,-1400);
+        encoderDrive(1,3200, 3200);
         encoderArm(0.6, 200);
         encoderArm(0.2, 200);
 
