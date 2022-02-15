@@ -44,8 +44,10 @@ public class ComplexAuto extends LinearOpMode{
                  */
             }
         });
-        robot.armMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        //robot.armMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         waitForStart();
+
+        /*
         //get the position of the shipping element
         robot.armMotor.setTargetPosition(200);
         robot.armMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
@@ -60,6 +62,8 @@ public class ComplexAuto extends LinearOpMode{
         robot.armMotor.setPower(0.4);
         sleep(2000);
         robot.armMotor.setPower(0);
+
+         */
         /*ShippingElementDetector.ShippingElementLocation elementLocation = detector.getShippingElementLocation();
         telemetry.addData("element location:", elementLocation);
         telemetry.update();
