@@ -14,6 +14,18 @@ public class RedShippingHubAuto extends LinearOpMode{
         //initialize hardware map
         robot.init(hardwareMap);
         
+        /*
+        turn 90 
+        move forward
+        turn left 90
+        move forward to shipping hub
+        lift arm
+        release block
+        arm down
+        
+        park??
+        */
+        
     }
     public void encoderDrive(double speed,
                              double armCounts) {
