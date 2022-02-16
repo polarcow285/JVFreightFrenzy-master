@@ -33,7 +33,7 @@ public class ShippingElementDetector extends OpenCvPipeline {
     );
     static final Rect leftROI = new Rect(
             new Point( 0, 0),
-            new Point(50, 90)
+            new Point(20, 60)
     );
 
     public ShippingElementDetector(Telemetry t) { telemetry = t; }
@@ -43,12 +43,12 @@ public class ShippingElementDetector extends OpenCvPipeline {
         Imgproc.cvtColor(input, mat, Imgproc.COLOR_RGB2HSV);
 
         //define HSV range to identify the color yellow
-        //Scalar lowHSV = new Scalar (15, 100, 100);
-        //Scalar highHSV = new Scalar(30, 255, 255);
+        Scalar lowHSV = new Scalar (15, 100, 100);
+        Scalar highHSV = new Scalar(30, 255, 255);
 
         //applies a threshold (everything that is yellow will be white, everything else will be black)
         //returns a new mat with this threshold
-        //Core.inRange(mat, lowHSV, highHSV, mat);
+        Core.inRange(mat, lowHSV, highHSV, mat);
 
         //extract regions of interest from camera frame
         //submat = sub-matrix, a portion of the original
@@ -91,7 +91,7 @@ public class ShippingElementDetector extends OpenCvPipeline {
 
          */
 
-        return mat;
+        return left;
     }
     public ShippingElementLocation getShippingElementLocation(){
         return elementLocation;
