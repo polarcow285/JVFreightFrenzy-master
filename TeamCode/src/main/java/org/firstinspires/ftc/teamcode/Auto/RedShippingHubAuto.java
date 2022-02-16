@@ -5,8 +5,8 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 
 import org.firstinspires.ftc.teamcode.Projects.ProjectTank;
 
-@TeleOp(name="TankDrive")
-public class TankDrive extends LinearOpMode{
+@TeleOp(name="RedShippingHubAuto")
+public class RedShippingHubAuto extends LinearOpMode{
     public ProjectTank robot = new ProjectTank();
 
     @Override
