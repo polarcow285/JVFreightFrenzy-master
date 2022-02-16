@@ -7,7 +7,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
 @Autonomous(name="AutoRedCarousel")
 //"tag" that is displayed on driver hub
-public class AutoRedCarousel extends LinearOpMode{
+public class  AutoRedCarousel extends LinearOpMode{
     //creating robot object
     public ProjectTank robot = new ProjectTank();
 
