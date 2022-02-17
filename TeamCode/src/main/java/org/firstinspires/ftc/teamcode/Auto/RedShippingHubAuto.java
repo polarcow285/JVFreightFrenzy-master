@@ -24,6 +24,19 @@ public class RedShippingHubAuto extends LinearOpMode {
 
         park??
         */
+        encoderDrive(0.4,750, -750);
+        encoderDrive(0.8, 3250, 3250);
+        encoderDrive(0.4, -750, 750);
+        encoderDrive(0.8, 2000, 2000);
+
+        robot.armMotor.setPower(0.4);
+        sleep(2000);
+        robot.armMotor.setPower(0.2);
+        //sleep();
+        robot.clawMotor.setPower(1);
+        sleep(1000);
+        robot.armMotor.setPower(0);
+        //sleep();
     }
 
     public void encoderDrive(double speed,
